@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nougat Documentation</title>
+    <link href="../../style.css" rel="stylesheet" />
+</head>
+<body>
+    <br/>
+    <div class="content">
+        <h1 class="title">Nougat Documentation</h1><br/>
+        <h2 class="title">II - Nougat as Language</h2>
+        <br/><span class="divider"/><br/>
+        <div class="navigation" align="center">
+                <a href="1.html">&#x2190; Introduction</a> &#x2014; <a href="3.html">Environment Set-up &#x2192;</a><br/>
+        </div>
+        <br/><span class="divider"/>
+        <br/><br/>
+        <h3 id="2_1">2.1 Influences</h3><br/>
+        <p><span class="indent"/>Programming languages such as C, Alef++, JavaScript, Perl, Go, Python, and others are languages that has some influence in Nougat, specially Go with its <i>go statement</i>, JavaScript and Perl with their dynamism in scripting, and C in primal syntatic structure. As for instance, JavaScript declaration for a function would look a lot like this:</p><br/>
+        <code>
+            <pre>funtion add(x, y) {
+    return x + y;
+}</pre>
+        </code><br/>
+        <p><span class="indent"/>In Nougat, the function declaration above will be translated as:</p><br/>
+        <code>
+            <pre>fun add(x, y) {
+    return x + y;
+}</pre>
+        </code><br/>
+        <p><span class="indent"/>This makes the Nougat programming langauge easier to learn for those who had a little experience in coding despite of its' syntax complixity.</p>
+        <br/><br/>
+        <h3 id="2_2">2.2 Backus-Naur Form Definition</h3><br/>
+        <p><span class="indent"/>According to <i><a href="" target="_blank">Wikipedia</a></i>, Backus-Naur Form is a metasyntax notation for context-free grammars, often used to describe the syntax of languages used in computing, such as computer programming languages, document formats, instruction sets and communication protocols.</p><br/>
+        <b id="2_2_1">2.2.1 Reserved Keywords</b>
+        <br/><br/>
+        <p><span class="indent"/>The below list of keywords are the so-called "<i>reserved keywords</i>," which are words that cannot be used as identifier(s) in Nougat.</p><br/>
+        <code>
+            <pre>  break      case        catch       continue      default
+  defer      do          else        false         finally
+  fun        go          if          include       iter
+  nil        of          render      return        switch
+  throw      try         true        while         var</pre>
+        </code><br/>
+        <b id="2_2_2">2.2.2 Grammar Definition</b>
+        <br/><br/>
+        <p><span class="indent"/>Here is the complete grammar definition of Nougat's syntax and language rules.</p><br/>
+        <code>
+<pre>Nougat := (IncludeStmt | VarDeclStmt | FuncDeclStmt)*
+
+IncludeStmt :=
+        &quot;include&quot; &lt;STRING&gt; (&quot;,&quot; &lt;STRING&gt;)* &quot;;&quot;
+
+VarDeclStmt :=
+        &quot;var&quot; &lt;IDENTIFIER&gt; [&quot;=&quot; Expression]
+        (&quot;,&quot; &lt;IDENTIFIER&gt; [&quot;=&quot; Expression])* &quot;;&quot;
+
+FuncDeclStmt :=
+        &quot;fun&quot; &lt;IDENTIFIER&gt;
+        &quot;(&quot; [&lt;IDENTIFIER&gt; [&quot;=&quot; Expression] (&quot;,&quot; &lt;IDENTIFIER&gt; [&quot;=&quot; Expression])*] &quot;)&quot;
+        Statement
+
+Statement :=
+        BlockStmt | VarDeclStmt | DeferStmt | RenderStmt |
+        IfStmt | WhileStmt | DoWhileStmt | ReturnStmt |
+        ThrowStmt | GoStmt | SwitchStmt | TryCatchFinallyStmt |
+        IterStmt | BreakStmt | ContinueStmt | FuncDeclStmt |
+        ExpressionStmt
+
+BlockStmt := (Statement)*
+
+DeferStmt := &quot;defer&quot; Statement
+
+RenderStmt := &quot;render&quot; Expression &quot;;&quot;
+
+IfStmt :=
+        &quot;if&quot; &quot;(&quot; Expression &quot;)&quot; Statement
+        [&quot;else&quot; Statement]
+
+WhileStmt := &quot;while&quot; &quot;(&quot; Expression &quot;)&quot; Statement
+
+DoWhileStmt :=
+        &quot;do&quot; Statement
+        &quot;while&quot; &quot;(&quot; Expression &quot;)&quot; &quot;;&quot;
+
+ReturnStmt := &quot;return&quot; Expression &quot;;&quot;
+
+ThrowStmt := &quot;throw&quot; Expression &quot;;&quot;
+
+GoStmt := &quot;go&quot; Statement
+
+SwitchStmt :=
+        &quot;switch&quot; &quot;(&quot; Expression &quot;)&quot;
+        &quot;{&quot;
+        ((&quot;case&quot; Expression &quot;:&quot;)* Statement)*
+        [&quot;default&quot; &quot;:&quot; Statement]
+        &quot;}&quot;
+
+TryCatchFinallyStmt :=
+        &quot;try&quot; Statement
+        &quot;catch&quot; [&quot;(&quot; &lt;IDENTIFIER&gt; &quot;)&quot;] Statement
+        [&quot;finally&quot; Statement]
+
+IterStmt :=
+        &quot;iter&quot; &quot;(&quot; &lt;IDENTIFIER&gt; &quot;of&quot; &lt;IDENTIFIER&gt; &quot;)&quot;
+        Statement
+
+BreakStmt := &quot;break&quot; &quot;;&quot;
+
+ContinueStmt := &quot;continue&quot; &quot;;&quot;
+
+ExpressionStmt := Expression (&quot;,&quot; Expression)* &quot;;&quot;
+
+Expression := LogicExpr
+
+LogicExpr := NilCoalescingExpr ((&quot;&amp;&amp;&quot; | &quot;||&quot;) NilCoalescingExpr)*
+
+NilCoalescingExpr := EqualityExpr (&quot;&#63;&quot; EqualityExpr)*
+
+EqualityExpr := ComparisonExpr ((&quot;==&quot; | &quot;!=&quot; | &quot;=&quot;) ComparisonExpr)*
+
+ComparisonExpr := TermExpr ((&quot;&lt;&quot; | &quot;&gt;&quot; | &quot;&lt;=&quot; | &quot;&gt;=&quot;) TermExpr)*
+
+TermExpr := FactorExpr ((&quot;+&quot; | &quot;-&quot;) FactorExpr)*
+
+FactorExpr := UnaryExpr ((&quot;/&quot; | &quot;*&quot; | &quot;%&quot;) UnaryExpr)*
+
+UnaryExpr := ([&quot;!&quot; | &quot;+&quot; | &quot;-&quot; | &quot;~&quot;] Expression) | PrimaryExpr
+
+ObjectInitExpr :=
+        &quot;&amp;&quot; (&quot;[&quot; [Expression (&quot;,&quot; Expression)*] &quot;]&quot; |
+        &quot;{&quot; [&lt;IDENTIFIER&gt; [&quot;:&quot; Expression] (&quot;,&quot; &lt;IDENTIFIER&gt; [&quot;:&quot; Expression])*] &quot;}&quot;)
+
+GroupedExpr := &quot;(&quot; Expression &quot;)&quot;
+
+LambdaExpr :=
+        &quot;fun&quot; &lt;IDENTIFIER&gt;
+        &quot;(&quot; [&lt;IDENTIFIER&gt; [&quot;=&quot; Expression] (&quot;,&quot; &lt;IDENTIFIER&gt; [&quot;=&quot; Expression])*] &quot;)&quot;
+        Statement
+
+PrimaryExpr :=
+        (&lt;STRING&gt; | &lt;DIGIT&gt; | LambdaExpr |
+        &lt;IDENTIFIER&gt; (&quot;.&quot; &lt;IDENTIFIER&gt;)* |
+        &quot;true&quot; | &quot;false&quot; | &quot;nil&quot; |
+        ObjectInitExpr | GroupedExpr)
+        (&quot;[&quot; Expression &quot;]&quot; | &quot;(&quot; [Expression (&quot;,&quot; Expression)*] &quot;)&quot;)*</pre>
+        </code>
+        <br/><br/>
+        <h3 id="2_3">2.3 Execution Procedures</h3><br/>
+        <p><span class="indent"/>Nougat is a just-in-time compiled language, thus, source codes are compiled and executed at runtime. Being said, it follows an execution procedure as shown in the diagram below:</p>
+        <br/><br/>
+        <div align="center">
+            <img src="../res/img_1.png" width="310"/>
+        </div>
+        <br/><br/>
+        <p><span class="indent"/>The Nougat JIT process starts with lexical analysis phase and ends with exeuction/runtime. However, each phase can be halted if any error occured.</p>
+        <br/><br/>
+        <b id="2_3_1">2.3.1 Lexical Analysis</b>
+        <br/><br/>
+        <p><span class="indent"/>The lexical analysis phase is the process whereare the input source code are being scanned and is identified. Hence, it'll be converted into token that contains informations such as source file, location (line and column), token type, and of course it's own image.</p>
+        <br/><br/>
+        <b id="2_3_2">2.3.2 Abstract Syntax Tree</b>
+        <br/><br/>
+        <p><span class="indent"/>Abstract Syntax Tree is a representation of linkage and structure of a source code, hence, this phase is where the tokens from lexical analysis are being analyzed base on the grammatical rules of Nougat. However, if an error has encountered the parsing phase might be halted. Additionally, this phase generates informations that can be resolved and visited later on the semantic analysis and execution phase.</p>
+        <br/><br/>
+        <b id="2_3_3">2.3.3 Semantic Analysis</b>
+        <br/><br/>
+        <p><span class="indent"/>After the generation ASTs (Abstract Syntax Trees), datas being held are now available to be walked in via linkage generated within each AST. Whereas, symbols, names, and/or identifiers are being resolve. In this phase, already used or undeclared names/identifiers are reported, if then, the compilation is halted.</p>
+        <br/><br/>
+        <b id="2_3_4">2.3.4 Execution/Runtime</b>
+        <br/><br/>
+        <p><span class="indent"/>The final phase of compilation is the execution itself. In this phase, after the successful semantic analysis, Nougat then proceeds to execute each AST-generated details, on the other hand, this is where the source code gets executed.</p>
+        <br/><br/>
+        <div class="navigation" align="center">
+            <a href="1.html">&#x2190; Introduction</a> &#x2014; <a href="3.html">Environment Set-up &#x2192;</a><br/>
+            <a href="../../index.html">&#x2191; Table of Contents</a>
+        </div>
+        <br/><span class="divider"/><br/>
+        <footer>
+            <small>Copyright &copy; 2021 - <a href="https://twitter.com/nathannestein" target="_blank">@nathannestein</a></small>
+            <br/><br/>
+        </footer>
+    </div>
+</body>
+</html>

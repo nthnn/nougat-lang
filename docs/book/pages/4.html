@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nougat Documentation</title>
+    <link href="../../style.css" rel="stylesheet" />
+</head>
+<body>
+    <br/>
+    <div class="content">
+        <h1 class="title">Nougat Documentation</h1><br/>
+        <h2 class="title">IV - Programming</h2>
+        <br/><span class="divider"/><br/>
+        <div class="navigation" align="center">
+            <a href="3.html">&#x2190; Environment Set-up</a> &#x2014; <a href="5.html">Library Plug-ins &#x2192;</a><br/>
+        </div>
+        <br/><span class="divider"/>
+        <br/><br/>
+        <h3 id="4_1">4.1 Expressions</h3><br/>
+        <p><span class="indent"/>In programming, expressions are piece/unit of code that resolves and evaluates into a value. However, in Nougat, there are many expression types which are discussed below, this includes the literals, operations, arrays, maps, and lambdas.</p>
+        <br/><br/>
+        <b id="4_1_1">4.1.1 Literals</b>
+        <br/><br/>
+        <p><span class="indent"/>Literals are expressions of constant value representation which are executed during the source code's runtime. These are interpreted are runtime so that the data can be and will be stored.</p>
+        <br/><br/>
+        <b id="4_1_1_1">4.1.1.1 Numbers</b>
+        <br/><br/>
+        <p><span class="indent"/>Every constant numbers are treated as 8 bytes double precision floating-point real numbers which has 11-bit exponential length and 52-bits mantissa length. Additionally, there are four format of numbers that can be used in Nougat; hexadecimal, octadecimal, binary, and default decimal format.</p><br/>
+        <p><span class="indent"/>Moreover, the maximum value of a number that can be defined in Nougat is <span class="snip">1.7976931348623158 E+308</span> and the minimum is <span class="snip">2.2250738585072014 E-308</span>.</p>
+        <br/><br/>
+        <center>
+            <table border="1">
+                <thead>
+                    <td>Base</td>
+                    <td>Example</td>
+                </thead>
+                <tr>
+                    <td>Decimal</td>
+                    <td>88</td>
+                </tr>
+                <tr>
+                    <td>Binary</td>
+                    <td>0b1011000</td>
+                </tr>
+                <tr>
+                    <td>Octadecimal</td>
+                    <td>0c130</td>
+                </tr>
+                <tr>
+                    <td>Hexadecimal</td>
+                    <td>0x58</td>
+                </tr>
+            </table>
+        </center>
+        <br/><br/>
+        <p><span class="indent"/>As shown in the example above, <span class="snip">88</span> in the default decimal format in binary format starts with prefix <span class="snip">0b</span>, octadecimal with <span class="snip">0c</span>, and hexadecimal with <span class="snip">0x</span>.</p>
+        <br/><br/>
+        <b id="4_1_1_2">4.1.1.2 Bools</b>
+        <br/><br/>
+        <p><span class="indent"/>Booleans in computing and programming is a value than can be either <i>&quot;true&quot;</i> or <i>&quot;false&quot;</i> which is used in representation of truth value in logic and Boolean Algebra.</p>
+        <br/><br/>
+        <b id="4_1_1_3">4.1.1.3 Nil</b>
+        <br/><br/>
+        <p><span class="indent"/>A value but empty in Nougat is called, <i>&quot;nil&quot;</i>, however, zero and nil are different. The difference is that zero is identified as number, meanwhile <span class="snip">nil</span> is nothing or void.</p>
+        <br/><br/>
+        <b id="4_1_1_4">4.1.1.4 Strings</b>
+        <br/><br/>
+        <p><span class="indent"/>Strings is a data that represents and contains texts, it can be either a constant or from a variable. In Nougat, string is considered a data type, thus can be treated as array (will be discussed in next subsections). Here is an example string in Nougat: <span class="snip">&quot;Hello world!&quot;</span></p><br/>
+        <p><span class="indent"/>As shown in the example, strings should be inside double quotations (but single quotations would also do). Additionally, strings can also contain escape sequence. These escape sequence are commands along with the string which in runtime will be replaced with its corresponding value. Below is the table thats shows the escape sequence commands in Nougat.</p><br/>
+        <center>
+            <table border="1">
+                <thead>
+                    <td>Escape Sequence</td>
+                    <td>Value</td>
+                </thead>
+                <tr>
+                    <td>&bsol;a</td>
+                    <td>Alert</td>
+                </tr>
+                <tr>
+                    <td>&bsol;b<i>n...n</i></td>
+                    <td>Binary value. The n's after the <span class="snip">\b</span> should be replaced with an actual binary number.</td>
+                </tr>
+                <tr>
+                    <td>&bsol;f</td>
+                    <td>Formfeed/Page break</td>
+                </tr>
+                <tr>
+                    <td>&bsol;n</td>
+                    <td>New line</td>
+                </tr>
+                <tr>
+                    <td>&bsol;o<i>n...n</i></td>
+                    <td>Octal value. The n's after the <span class="snip">\o</span> should be replaced with an actual octal number.</td>
+                </tr>
+                <tr>
+                    <td>&bsol;r</td>
+                    <td>Carriage return</td>
+                </tr>
+                <tr>
+                    <td>&bsol;s</td>
+                    <td>Backspace</td>
+                </tr>
+                <tr>
+                    <td>&bsol;t</td>
+                    <td>Horizontal tab</td>
+                </tr>
+                <tr>
+                    <td>&bsol;u<i>xxxx</i></td>
+                    <td>Hexadecimal value. The four <i>x</i> after the <span class="snip">\u</span> should be replaced with a hexadecimal value.</td>
+                </tr>
+                <tr>
+                    <td>&bsol;v</td>
+                    <td>Vertical tab</td>
+                </tr>
+                <tr>
+                    <td>&bsol;x<i>hh</i></td>
+                    <td>Hexadecimal value. The two <i>h</i> after the <span class="snip">\x</span> should be replaced with a hexadecimal value.</td>
+                </tr>
+                <tr>
+                    <td>&bsol;&quot;</td>
+                    <td>Double quotation mark to avoid terminating the string expression.</td>
+                </tr>
+                <tr>
+                    <td>&bsol;&apos;</td>
+                    <td>Single quotation mark to avoid terminating the string expression.</td>
+                </tr>
+            </table>
+        </center><br/>
+        <p><span class="indent"/>Here's an example usage of escape sequence, whereas it containts the string <i>&quot;Hello, world!&quot;</i> and ends with a new line and a carriage return: <span class="snip">&quot;Hello, world!&bsol;r&bsol;n&quot;</span></p>
+        <br/><br/>
+        <b id="4_1_2">4.1.2 Operators</b>
+        <br/><br/>
+        <p><span class="indent"/>According to <i><a href="https://en.wikipedia.org/wiki/Operator_(computer_programming)" target="_blank">Wikipedia</a></i>, operators might differ either syntatically or semantically and these are constructs defined in a programming language that commonly behaves like functions. Operators in Nougat, additionally, uses punctuations, for example plus <i>&quot;&plus;&quot;</i>, minus <i>&quot;-&quot;</i>, comma <i>&quot;&comma;&quot;</i>, less than <i>&quot;&lt;&quot;</i> and greater than <i>&quot;&gt;&quot;</i> sign.</p>
+        <br/><br/>
+        <b id="4_1_2_1">4.1.2.1 Pre-expressional Operators</b>
+        <br/><br/>
+        <p><span class="indent"/>Pre-expressional operators in Nougat, like in any other traditional imperative programming languages, are operators placed before the expression. For instance, in a mathematical expression, the - sign is placed before a number to denote a negation.</p><br/>
+        <center>
+            <table border="1">
+                <thead>
+                    <td>Operator</td>
+                    <td>Description</td>
+                </thead>
+                <tr>
+                    <td>+</td>
+                    <td>Converts a negative number into a positive number. Note that this is operator doesn't make any effect on non-negative numbers.</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>Negates any number.</td>
+                </tr>
+                <tr>
+                    <td>~</td>
+                    <td>Bitwise complement operator reverses each bit in a number. A very easy to understand explanation is for example, <i>&quot;~0xffff0000&quot;</i> is equivalent to <i>&quot;0x0000ffff&quot;</i>.</td>
+                </tr>
+                <tr>
+                    <td>!</td>
+                    <td>Logical negation operator. This produces a <span class="snip">true</span> value if its operand has a <span class="snip">false</span> value and vice-versa. Example, <span class="snip">!false</span> is equal to <span class="snip">true</span>.</td>
+                </tr>
+            </table>
+        </center><br/>
+        <p><span class="indent"/>These pre-expressional operators are also widely known as <i>&quot;Unary Prefix&quot;</i> or <i>&quot;Unary Operators&quot;</i>.</p>
+        <br/><br/>
+        <b id="4_1_2_2">4.1.2.2 Binary Operators</b>
+        <br/><br/>
+        <p><span class="indent"/>Binary operations in programming are expressions whereas a left and right expression is being evaluated through a certain operation.</p><br/>
+        <center>
+            <table border="1">
+                <thead>
+                    <td>Operator</td>
+                    <td>Description</td>
+                    <td>Example</td>
+                </thead>
+                <tr>
+                    <td>+</td>
+                    <td>Additive operator. Adds a two expression; the expressions can be integer, string, boolean, etc.</td>
+                    <td>4 + 4<br/><i>= 8</i></td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>Subtraction operator. Subtracts two expressions. This can also be used in strings to remove a particular substring.</td>
+                    <td>12 - 4<br/><i>= 8</i><br/><br/>&quot;Hello, world!&quot; - &quot;Hello, &quot;<br/><i>= &quot;world!&quot;</i></td>
+                </tr>
+                <tr>
+                    <td>/</td>
+                    <td>Division operator. Divides numbers (e.g., integers, decimals, etc).</td>
+                    <td>24 / 3<br/><i>= 8</i></td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td>Multiplication operator. Multiplies a number, however additionally, this reconcaternates a string if the left-hand expression is a string and the right-hand expression is a number.</td>
+                    <td>4 * 2<br/><i>= 8</i><br/><br/>&quot;-&quot; * 8<br/><i>= &quot;--------&quot;</i></td>
+                </tr>
+                <tr>
+                    <td>%</td>
+                    <td>Remainder operator. Returns the remainder of a division operation.</td>
+                    <td>8 % 3<br/><i>= 2</i></td>
+                </tr>
+                <tr>
+                    <td>&Hat;</td>
+                    <td>Bitwise <u>OR</u> operator.</td>
+                    <td>11 &Hat; 3<br/><i>= 8</i></td>
+                </tr>
+                <tr>
+                    <td>&</td>
+                    <td>Bitwise <u>AND</u> operator.</td>
+                    <td>8 & 3<br/><i>= 0</i></td>
+                </tr>
+                <tr>
+                    <td>|</td>
+                    <td>Bitwise <u>OR</u> operator.</td>
+                    <td>8 | 3<br/><i>= 11</i></td>
+                </tr>
+                <tr>
+                    <td>&lt;&lt;</td>
+                    <td>Left-shift bitwise operator. Shifts the individual bits of the first operand to the left.</td>
+                    <td>4 &lt;&lt; 1<br/><i>= 8</i></td>
+                </tr>
+                <tr>
+                    <td>&gt;&gt;</td>
+                    <td>Right-shift bitwise operator. Shift the operand's bits to the right.</td>
+                    <td>16 &gt;&gt; 1<br/><i>8</i></td>
+                </tr>
+                <tr>
+                    <td>&quest;</td>
+                    <td>Nil-coalescing operator. This returns the value of right expression if left is nil, otherwise returns the left value.</td>
+                    <td>nil &quest; &quot;Hello!&quot;<br/><i>= &quot;Hello!&quot;</i><br/><br/>10 &quest; nil<br/><i>= 10</i></td>
+                </tr>
+                <tr>
+                    <td>==</td>
+                    <td>Equal-to operator. Evaluates to true if both expressions has an equal value.</td>
+                    <td>&quot;Hi!&quot; == &quot;Hello!&quot;<br/><i>= false</i><br/><br/>1 == 1<br/><i>= true</i></td>
+                </tr>
+                <tr>
+                    <td>!=</td>
+                    <td>Not-equal-to operator. Evaluates to false if both expressions has an equal value.</td>
+                    <td>&quot;Hi!&quot; != &quot;Hello!&quot;<br/><i>= true</i><br/><br/>1 != 1<br/><i>= false</i></td>
+                </tr>
+                <tr>
+                    <td>&amp;&amp;</td>
+                    <td>Logical <u>AND</u> operator. Evaluates to <i>true</i> if both expressions are true.</td>
+                    <td>true &amp;&amp; true<br/><i>= true</i><br/><br/>false &amp;&amp; (1 == 1)<br/><i>false</i></td>
+                </tr>
+                <tr>
+                    <td>&vert;&vert;</td>
+                    <td>Logical <u>OR</u> operator. Evaluates to <i>true</i> if one of the expression is true, if both are false then <i>false</i>.</td>
+                    <td>false &vert;&vert; true<br/><i>= true</i><br/><br/>(1 == 2) &vert;&vert; (2 == 3)<br/><i>= false</i></td>
+                </tr>
+                <tr>
+                    <td>&lt;</td>
+                    <td>Less than operator. Returns <i>true</i> if the left expression has a number value which is less than the right expression number value.</td>
+                    <td>8 &lt; 4<br/><i>= false</i><br/><br/>4 &lt; 8<br/><i>= true</i></td>
+                </tr>
+                <tr>
+                    <td>&gt;</td>
+                    <td>Greater than operator. Returns <i>true</i> if the left expression has a number value which is greater than the right expression number value.</td>
+                    <td>8 &gt; 4<br/><i>= true</i><br/><br/>4 &gt; 8<br/><i>= false</i></td>
+                </tr>
+                <tr>
+                    <td>&lt;=</td>
+                    <td>Less-than-or-equal operator. Returns <i>true</i> if the left expression has a number value which is less than or equal the right expression number value.</td>
+                    <td>8 &lt;= 4<br/><i>= false</i><br/><br/>8 &lt;= 8<br/><i>= true</i></td>
+                </tr>
+                <tr>
+                    <td>&gt;=</td>
+                    <td>Greater-than-or-equal operator. Returns <i>true</i> if the left expression has a number value which is greater than or equal the right expression number value.</td>
+                    <td>8 &gt;= 4<br/><i>= true</i><br/><br/>8 &gt;= 8<br/><i>= true</i></td>
+                </tr>
+            </table>
+        </center>
+        <br/><br/>
+        <b id="4_1_3">4.1.3 Arrays &amp; Maps</b>
+        <br/><br/>
+        <p><span class="indent"/>Arrays and maps in Nougat can store multiple values which can be then later on access by either index (if array) or key (if map).</p>
+        <br/><br/>
+        <b id="4_1_3_1">4.1.3.1 Arrays</b>
+        <br/><br/>
+        <p><span class="indent"/>Arrays are object/variables that can store multiple values and later be accessed with the use of an index. Items of an array should be inside brackets (<i>[</i> and <i>]</i>) that follows an ampersand (<i>&amp;</i>), while items are enumerated by commas. Arrays, since Nougat is a dynamically typed programming language, can store any data with any type (e.g., number, string, etc.) Below is an example of array store in variable named &quot;<i>greetings</i>&quot;. <small>(<i>The variable declarations will be discussed on next sections.</i>)</small></p>
+        <br/><br/>
+        <code>
+            <pre>var greetings = &amp;[&quot;Hello, world!&quot;, &quot;你好世界！&quot;, &quot;مرحبا بالعالم!&quot;];</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>Hence, the variable <i>greetings</i> was declared and contains an array with three string literals as values. These values can be later on replaced and accessed, but can't be removed or deleted.<br/><br/><span class="indent"/>In order to access an object/value inside an array, index number should be used between brackets after the variable name. For instance, <span class="snip">greetings[0]</span>, which would return the value &quot;<i>Hello, world!</i>&quot; Array's index always starts with 0, for some reason, which means that the first element of the array has an index of 0, while the second element is at index 1, and so on.</p>
+        <br/><br/>
+        <b id="4_1_3_2">4.1.3.2 Maps</b>
+        <br/><br/>
+        <p><span class="indent"/>Maps are objects like arrays that can store multiple values, however, unlike arrays, values from a map in Nougat can be access through either by using a key or by selecting a child identifier. Any object types in a map can be a key; a string, number, symbol, or even a function name. In order to initialize a map, keys and values (separated by a colon) must be placed inside curly braces (<i>{</i> and <i>}</i>) that follows an ampersand (<i>&amp;</i>). For example:</p>
+        <br/><br/>
+        <code>
+            <pre>var greetings = &amp;{
+    "English":  "Hello, world!",
+    "Chinese":  "你好世界！",
+    "Arabic":   "مرحبا بالعالم!"
+};</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>As shown above, strings are being used as a key of string values which are stored in the variable <i>greetings</i>. These values can be later accessed the same way array values are accessed, however, the index are the keys in this case of maps. For instance, <span class="snip">greetings[&quot;Chinese&quot;]</span> which will return the string value &quot;你好世界！&quot;</p>
+        <br/><br/>
+        <b id="4_1_4">4.1.4 Lambdas</b>
+        <br/><br/>
+        <p><span class="indent"/>Lambdas in Nougat are anonymous function expressions (functions will be discussed on the next subsection). These anonymous functions can be used as bridge, for instance, lambdas can be used as an argument for making a feedback event from a listener. Here's an example of a lambda being declared to a variable named <i>lambdaExample</i>:</p>
+        <br/><br/>
+        <code>
+            <pre>var lambdaExample = fun() {
+    render &quot;Hello, world!&quot;;
+};</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>As <span class=\"snip\">lambdaExample</span> contains a lambda, it can now be later called as function. For example, <span class="snip">lambdaExample()</span>. Another difference between a lambda and a function is that, lambdas cannot have names and are treated as expressions.</p>
+        <br/><br/>
+        <h3 id="4_2">4.2 Comments</h3><br/>
+        <p><span class="indent"/>Like in any other programming languages, Nougat, also allows programmers to insert comments. Comments are programmer-readable annotations and/or explanations that adds readability to the code which makes it easier to read for humans. However, these in-line texts doesn't affect the code on execution and is being ignored by the interpreter.</p>
+        <br/><br/>
+        <code>
+            <pre># This is a comment.
+var example; # Comments starts here.</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>In Nougat, comments can be placed in any line. Comments should start with <i>#</i> sign, and ends with the next line. The code above is an example placement of comments in Nougat.</p>
+        <br/><br/>
+        <h3 id="4_3">4.3 Variables &amp; Functions</h3><br/>
+        <b id="4_3_1">4.3.1 Variables</b>
+        <br/><br/>
+        <p><span class="indent"/>Variables in programming is a data storage associated with a symbol or name (often called identifier). These variables can store values and later can be replaced with another value or access its value. However, variables in Nougat, unlike in other programming language, cannot be constant and doesn't have a data type. Thus, any variable in Nougat can be an integer, string, etc. Variables in Nougat can be declared with the use of syntaces below.</p>
+        <br/><br/>
+        <code>
+            <pre>var &lt;name&gt;;
+var &lt;name&gt; = &lt;value&gt;;
+var &lt;name&gt;, &lt;name&gt;, <i>etc...</i>;
+var &lt;name&gt; = &lt;value&lt;, &lt;name&gt; = &lt;value&lt;, <i>etc...</i>;
+
+<i>And so on...</i></pre>
+        </code>
+        <br/>
+        <p><span class="indent"/>Here is an example of variable declaration and usage.</p>
+        <br/>
+        <code>
+            <pre>var greetings = &quot;Hello, world!&quot;;
+render greetings;</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>The <span class="snip">render</span> statement will be later discussed on the next subsections. Variables' value can be then replaced by simply using the <span class="snip">=</span> operator.</p>
+        <br/><br/>
+        <code>
+            <pre>var greetings = &quot;Hello, world!&quot;;
+render greetings;
+
+greetings = &quot;Value's now changed!&quot;
+render greetings;</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>Furthermore, variable names can only be used once and are case-sensitive, thus, <span class="snip">hello</span> is a different name from <span class="snip">Hello</span>. Numbers can also be placed after letters as variable names.</p>
+        <br/><br/>
+        <b id="4_3_2">4.3.2 Functions</b>
+        <br/><br/>
+        <p><span class="indent"/>Functions are reusable and organized blocks of codes to perform a specific task. Functions can take an input(s) called parameters, and can possibly produce and return an output. Below is the syntax for declaring functions in Nougat.</p>
+        <br/><br/>
+        <code>
+            <pre>fun &lt;name&gt;(&lt;param name&gt; = &lt;value&gt;, ...) &lt;statement&gt;</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>It is very important to note that parameter names and its default values are optional. And also that parameter name should be different from other parameter names if parameters are more than one. Here are examples of function declarations.</p>
+        <br/><br/>
+        <code>
+            <pre>fun sayHello() {
+    render &quot;Hello!\n&quot;;
+}
+
+fun greet(greeting) {
+    render greeting + &quot;!\n&quot;;
+}
+
+fun printGreeting(greeting = &quot;Hello, from printGreeting()!&quot;) {
+    render greeting + &quot;\n&quot;;
+}</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>These functions can later be called with the use of their names followed by parenthesis, and expressional arguments if it requires parameters. It is also important to note that if a function parameter is declared with a default value, following parameters must also have default values too. Additionally, a function must be called and have arguments with the same number of parameters with the declaration. However, parameters with default value are optional. Thus, the above function examples can be called as shown below.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    sayHello();
+    greet(&quot;Hola&quot;);
+    printGreeting();
+    printGreeting(&quot;こんにちは！&quot;);
+}</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>The definition and usage of the <i>main()</i> function will be tackled later on the next subsection. The code above is expected to give the result:</p>
+        <br/><br/>
+        <code>
+            <pre>Hello!
+Hola!
+Hello, from printGreeting()!
+こんにちは！</pre>
+        </code>
+        <br/><br/>
+        <b id="4_3_2_1">4.3.2.1 The <i>main()</i> Function</b>
+        <br/><br/>
+        <p><span class="indent"/>Like most programming languages, the <i>main</i> function is an entry point whereas it is a point in a program where the execution begins. Here is an example of a Hello World program in Nougat.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    render &quot;Hello, world!&quot;;
+}</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>The Nougat interpreter looks for the <i>main()</i> function of the loaded script and executes if it has no pre-compilation errors (e.g. syntax errors).</p>
+        <br/><br/>
+        <h3 id="4_4">4.4 Statements</h3><br/>
+        <p><span class="indent"/>In accordance to <i><a href="https://en.wikipedia.org/wiki/Statement_(computer_science)" target="_blank">Wikipedia's</a></i> definition, a statement is an imperative programming language's syntatic unit and is the smallest standalone element that expresses an action to be carried out.</p>
+        <br/><br/>
+        <p><span class="indent"/>Moreover, statements can have internal components such as expression as keywords to define an statement. Every statement in Nougat should end with a semicolon (<i>;</i>).</p>
+        <br/><br/>
+        <b id="4_4_1">4.4.1 Render</b>
+        <br/><br/>
+        <p><span class="indent"/>The <span class="snip">render</span> statement is an statement used to render the text representation of a specified object to the standard output stream.</p>
+        <br/><br/>
+        <code>
+            <pre>Render Statement Syntax:
+
+    render &lt;expression&gt;;</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>Examples of <i>render</i> statement usage had already been shown from previous subsections, however, here's another example:</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    render &quot;Hello, world!&quot;;
+}</pre>
+        </code>
+        <br/><br/>
+        <b id="4_4_2">4.4.2 If, Else If, and Else</b>
+        <br/><br/>
+        <p><span class="indent"/>If, else-if, and else statements are also called conditional programming. Decision making in Nougat, like in any other programming languages, can be used to test and evaluate an expression then executes a certain statement or block if the condition was met.</p>
+        <br/><br/>
+        <p><span class="indent"/><span class="snip">if</span> statements primarily checks a condition and skips if the condition was not met, while <span class="snip">else if</span> statements follows an <span class="snip">if</span> statement and executes a statement/block if the previous <span class="snip">if</span> or <span class="snip">else if</span> statement was skipped. Lastly, the <span id="snip">else</span> statement, whereas it executes a certain statement/block if previous <span class="snip">if</span> or <span class="snip">else if</span> statements' conditions were not met.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    var hello = "Hello!";
+                
+    if(hello == "Hi!") {
+        render "hello is \"Hi!\"";
+    }
+    else if(hello == "Hola!") {
+        render "hello is \"Hola!\"";
+    }
+    else render "hello is \"" + hello + "\"";
+
+}</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>Hence, the code above will output <span class="snip">hello is &quot;Hello!&quot;</span>, since the variable <span class="snip">hello</span> contains string <span class="snip">&quot;Hello!&quot;</span> the conditions in <span class="snip">if</span> and <span class="snip">else if</span> statement will not be met.</p>
+        <br/><br/>
+        <p><span class="indent"/>It is also important that <span class="snip">else if</span> and <span class="snip">else</span> statements are optional, if an <span class="snip">if</span> statement's condition was not met then it'll be skipped.</p> 
+        <br/><br/>
+        <b id="4_4_3">4.4.3 Switch, Case, and Default</b>
+        <br/><br/>
+        <p><span class="indent"/>The <span class="snip">switch</span> statement in Nougat can be used in performing task that has different options for different task. It is also equitable for shorter <i>if-else</i> statements, while the <span class="snip">case</span>s are <i>if</i>s and the <span class="snip">default</span> statement is the <i>else</i> statement.</p>
+        <br/><br/>
+        <code>
+            <pre>switch(&lt;value&gt;) {
+    case &lt;value&gt;:
+        &lt;statement&gt;
+    ...
+    default:
+        &lt;statement&gt;
+}</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>A <span class="snip">case</span> statement can have another <i>case</i> statement below itself but not a <span class="snip">default</span> statement. And unlike other programming languages, Nougat doesn't require a break statement after a <i>case</i> and <i>default</i> statement. Below is an example of a Nougat program that show an example use of <span class="snip">switch</span> statement.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    var value = 3;
+                
+    switch(value) {
+        case 1:
+        case 2:
+            render "The value is either 1 or 2.";
+        case 3:
+            render "The value is 3.";
+        default:
+            render "The value is neither 1, 2, nor 3.";
+    }
+}</pre>
+        </code>
+        <br/><br/>
+        <b id="4_4_4">4.4.4 Looping</b>
+        <br/><br/>
+        <p><span class="indent"/>Looping in programming is process of doing a task repeatedly while condition is being met under a circumstance. On the other hand, looping is a process in programming that does a certain instruction until a condition is met.</p>
+        <br/><br/>
+        <p><span class="indent"/>In Nougat, there are several statements for doing loops discussed below; <span class="snip">while</span>, <span class="snip">do while</span>, <span class="snip">for</span>, and <span class="snip">iter</span>.</p>
+        <br/><br/>
+        <b id="4_4_4_1">4.4.4.1 While Loop</b>
+        <br/><br/>
+        <p><span class="indent"/>A <span class="snip">while</span> loop in Nougat programming language like in most programming languages, is a control flow statement for creating a loop that executes a certain block or statement until the given condition is met.</p>
+        <br/><br/>
+        <code>
+            <pre>while(&lt;expression&gt;)
+    &lt;statement&gt;</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>The example usage of while below creates a loop that repeats while the variable <i>i</i> has an integer value of less than 10.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    var i = 0;
+                
+    while(i < 10) {
+        render "The value is " + i + ".\n";
+        i = i + 1;
+    }
+}</pre>
+        </code>
+        <br/><br/>
+        <b id="4_4_4_2">4.4.4.2 Do-While Loop</b>
+        <br/><br/>
+        <p><span class="indent"/>The <span class="snip">do while</span> loop is almost similar to a <span class="snip">while</span> loop, however, the only difference between the two is that, in <span class="snip">do while</span> the condition is checked after the block or statement, thus, guarantees block/statement's execution at least once.</p>
+        <br/><br/>
+        <code>
+            <pre>do &lt;statement&gt;
+while(&lt;expression&gt;);</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>An example of <span class="snip">do while</span> statement usage is shown below. (Derived from <a href="#4_4_4_1">4.4.4.1 While Loop's example</a>.)</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    var i = 0;
+                            
+    do {
+        render "The value is " + i + ".\n";
+        i = i + 1;
+    } while(i < 10);
+}</pre>
+        </code>
+        <br/><br/>
+        <b id="4_4_4_3">4.4.4.3 Iteration</b>
+        <br/><br/>
+        <p><span class="indent"/>The <span class="snip">iter</span> loop in Nougat is a loop control flow which has an identifier (as shown in the syntax below) that acts as placeholder of a value from the expression (that should be containing array) on every loop's execution.</p>
+        <br/><br/>
+        <code>
+            <pre>iter(&lt;identifier&gt; of &lt;expression&gt;)
+    &lt;statement&gt;</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>Each value of array in the expression is automatically set as per execution of the statement, the value is then stored to the identifier that acts as the placeholder. The identifier's name cannot be used inside the statement of the <span class="snip">iter</span> itself as variable or lambda's name.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    var array = &[ "Hello!", "Hi!", "Hola!" ];
+                
+    iter(value of array)
+        render value + "\n";
+}</pre>
+        </code>
+        <br/><br/>
+        <b id="4_4_4_4">4.4.4.4 Break and Continue</b>
+        <br/><br/>
+        <p><span class="indent"/>The <span class="snip">break</span> and <span class="snip">continue</span> are both always used inside a loop's block. <span class="snip">break</span>'s main function is to stop a loop while the <span class="snip">continue</span> is used to continue the execution.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    var i = 0;
+                
+    while(true) {
+        if(i < 10) {
+            if(i % 2 == 0)
+                render "The even number is " + i + ".\n";
+            
+                i = i + 1;
+            }
+        else if(i >= 10) break;
+        else continue;
+    }
+}</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>Unlike other statements or conflow flows, these two doesn't require anything but a semicolon at the end. It is important to note that a <span class="snip">continue</span> statement will proceed for another execution of the loop and will not execute the following statement even though it belongs to the same block, additionally, the deferrals (which will be discussed on the next sub-section) will be skipped.</p>
+        <br/><br/>
+        <b id="4_4_5">4.4.5 Error Handling</b>
+        <br/><br/>
+        <p><span class="indent"/>Error handling in Nougat is simple and easy to understand. Imagine throwing an error and attempt/try to catch if something was thrown, then finally do something after catching it. That's it! That's how error handling is done in Nougat.</p>
+        <br/><br/>
+        <b id="4_4_4_5_1">4.4.5.1 Throwing Object</b>
+        <br/><br/>
+        <p><span class="indent"/>Any expression or value can be thrown in Nougat, this thrown object can be later on caught using a <span class="snip">catch</span> statement.</p>
+        <br/><br/>
+        <code>
+            <pre>throw &lt;expression&gt;;</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>If a thrown object is not caught, then the execution will halt and an uncaught error message will be shown that contains the thrown object.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    throw &quot;This is just a throw example!&quot;;
+}</pre>
+        </code>
+        <br/><br/>
+        <b id="4_4_4_5_2">4.4.5.2 Try, Catch, Finally</b>
+        <br/><br/>
+        <p><span class="indent"/>In Nougat error handling, like almost any other programming languages, it uses a <span class="snip">try</span> statement for the main execution block that tries to catch if any error will occur, then if an error was thrown, then the execution from the <span class="snip">try</span> statement will be aborted an will jump to the <span class="snip">catch</span> statement. In a <span class="snip">catch</span> statement, a symbol can be declared - this symbol will be used as placeholder of the thrown object. Lastly, a <span class="snip">finally</span> statement that follows a <span class="snip">catch</span> statement is used to finalize things up or to do some clean ups in the execution.</p>
+        <br/><br/>
+        <code>
+            <pre>try &lt;statement&gt;
+catch(&lt;identifier&gt;) &lt;statement&gt;
+finally &lt;statement&gt;</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>Moreover, it is optional to declare. If no symbol declared to be used as placeholder, then the parenthesis must be omitted. Additionally, a <span class="snip">finally</span> statement is also optional, and can be added only if needed.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    try {
+        throw &quot;This is just a throw example!&quot;;
+    }
+    catch(errorMessage) {
+        render &quot;The error caught was:\n\t&quot; + errorMessage;
+    }
+}</pre>
+        </code>
+        <br/><br/>
+        <b id="4_4_6">4.4.6 Go-thread Concurrency</b>
+        <br/><br/>
+        <p><span class="indent"/>The <span class="snip">go</span> threads in Nougat is a concept inspired from Go programming language. Intended for shorthand statement for creating concurrent executions via multi-threading.</p>
+        <br/><br/>
+        <code>
+            <pre>go &lt;statement&gt;</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>In Golang, goroutines try to reduce the time and memory cost, however, in Nougat, <span class="snip">go</span> are OS threads.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    go render &quot;Hello\n&quot;;
+    go render &quot;Hola\n&quot;;
+}</pre>
+        </code>
+        <br/><br/>
+        <b id="4_4_7">4.4.7 Return Values</b>
+        <br/><br/>
+        <p><span class="indent"/>A <span class="snip">return</span> statement stops the execution of a function of where it is located, then returns the value of the object as value of the function after being called in a stack.</p>
+        <br/><br/>
+        <code>
+            <pre>return &lt;expression&gt;;</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>If a <span class="snip">return</span> statement has no expression defined, it stops the function's execution and then automatically returns a <span class="snip">nil</span> value.</p>
+        <br/><br/>
+        <code>
+            <pre>fun add(x, y) {
+    return x + y;
+}
+            
+fun main() {
+    render &quot;1 + 1 = &quot; + add(1, 1);
+}</pre>
+        </code>
+        <br/><br/>
+        <b id="4_4_8">4.4.8 Deferrals</b>
+        <br/><br/>
+        <p><span class="indent"/>The <span class="snip">defer</span> statements is commonly used for ensuring that a function has performed a clean-up. The <span class="snip">defer</span> statement are always executed after a statement block's execution with the queue sequence of <i>FILO</i> (first-in, last-out).</p>
+        <br/><br/>
+        <code>
+            <pre>defer &lt;statement&gt;</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>However, it is also important to note that <span class="snip">defer</span> statements will be executed even before a <span class="snip">return</span>, <span class="snip">break</span>, <span class="snip">continue</span>, and <span class="snip">throw</span> statement will be executed.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    defer render &quot;World!&quot;;
+    defer render &quot;Hello, &quot;;
+}</pre>
+        </code>
+        <br/><br/>
+        <h3 id="4_5">4.5 File Inclusion</h3><br/>
+        <p><span class="indent"/>In programming, file inclusion is a concept to organize functions and other definitions by separating it to different files and folders. In Nougat, file inclusions can be done by declaring it from the header of the file with the syntax below:</p>
+        <br/><br/>
+        <code>
+            <pre>include &quot;&lt;file_path&gt;&quot;;
+include &quot;&lt;file_path&gt;&quot;, &quot;&lt;file_path&gt;&quot;, ...;</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>Including a multiple files is allowed as shown in the syntax below. However, it is also important to ensure the correct placement of files and folder to avoid future errors. Furthermore, all files the are included must end with the file extension &quot;.nou&quot;.</p>
+        <br/><br/>
+        <code>
+            <small><i>hello.nou</i></small>
+            <pre>fun hello() {
+    render &quot;Hello from hello.nou file!&quot;;
+}</pre>
+        </code><br/>
+        <code>
+            <small><i>main.nou</i></small>
+            <pre>include &quot;hello.nou&quot;
+fun main() {
+    hello();
+}</pre>
+        </code>
+        <br/><br/>
+        <div class="navigation" align="center">
+            <a href="3.html">&#x2190; Environment Set-up</a> &#x2014; <a href="5.html">Library Plug-ins &#x2192;</a><br/>
+            <a href="../../index.html">&#x2191; Table of Contents</a>
+        </div>
+        <br/><span class="divider"/><br/>
+        <footer>
+            <small>Copyright &copy; 2021 - <a href="https://twitter.com/nathannestein" target="_blank">@nathannestein</a></small>
+            <br/><br/>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nougat Documentation</title>
+    <link href="../../style.css" rel="stylesheet" />
+</head>
+<body>
+    <br/>
+    <div class="content">
+        <h1 class="title">Nougat Documentation</h1><br/>
+        <h2 class="title">V - Library Plug-ins</h2>
+        <br/><span class="divider"/><br/>
+        <div class="navigation" align="center">
+            <a href="4.html">&#x2190; Programming</a> &#x2014; <a href="6.html">The Standard Library &#x2192;</a><br/>
+        </div>
+        <br/><span class="divider"/>
+        <br/><br/>
+        <h3 id="5_1">5.1 What is a Library Plug-in?</h3><br/>
+        <p><span class="indent"/>Library plug-ins are Dynamic Link Library (DLL) files that are containing organized functions and are dynamically loaded on Nougat runtime. These libraries are organized containing a function that has something to do with a specific specialization (e.g.: networking, I/O, arrays, etc.)<br/><br/><span class="indent"/>A Nougat programmer can customize and create a library plug-in using C# (will be discussed on next sections). Nougat was created without an intention of making its library (or API) collection, however, it has one, the IO library (see section <a href="#5_4">5.4</a>).</p>
+        <br/><br/>
+        <h3 id="5_2">5.2 Creating New Library Plug-in</h3><br/>
+        <p><span class="indent"/>Library plug-ins can be created in C#. Here is an example of library plug-in written in C#, a function named &quot;greet()&quot; from class named &quot;Plugin&quot; that prints the good old &quot;Hello, world!&quot; greetings.</p>
+        <br/><br/>
+        <code>
+            <pre>using Nougat;
+using System;
+
+namespace Nougat {
+    public class Plugin {
+        public static object greet() {
+            Console.WriteLine(&quot;Hello, world!&quot;);
+        }
+    }
+}</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>As shown above, every function to be exported within the plug-in must be of <i>static object</i> type (even the parameters) and the namespace could be anything you want. After compiling and producing a DLL file out from the code above, move the DLL file into the <span class="snip">bin/plug-ins</span> folder in the Nougat installation.<br/><br/><span class="indent"/>After moving the DLL file, you can now use the plug-in you've created.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    Plugin.greet();
+}</pre>
+        </code>
+        <br/><br/>
+        <h3 id="5_3">5.3 Returning Arrays and Maps</h3>
+        <br/><br/>
+        <p><span class="indent"/>In a nutshell, the equivalent type of Nougat's arrays in C# is just an <span class="snip">object[]</span>, while maps are <span class="snip"><i>System.Collections.Generic.</i>List&lt;<i>System.Collections.Generic.KeyValuePair&lt;object, object&gt;</i>&gt;.</span></p>
+        <br/><br/>
+        <code>
+            <pre>using Nougat;
+using System.Collections.Generic;
+
+namespace ExamplePlugin {
+    public class Plugin {
+        public static object[] greetings() {
+            return new string[] { &quot;Hello!&quot;, &quot;Howdy!&quot;, &quot;Hola!&quot; };
+        }
+
+        public static List&lt;KeyValuePair&lt;object, object&gt;&gt; numbers() {
+            List&lt;KeyValuePair&lt;object, object&gt;&gt; nmbrs = new List&lt;KeyValuePair&lt;object, object&gt;&gt;();
+            nmbrs.Add(new KeyValuePair&lt;object, object&gt;((double) 1, &quot;One&quot;));
+            nmbrs.Add(new KeyValuePair&lt;object, object&gt;((double) 2, &quot;Two&quot;));
+            nmbrs.Add(new KeyValuePair&lt;object, object&gt;((double) 3, &quot;Three&quot;));
+
+            return nmbrs;
+        }
+    }
+}</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>Additionally, it is important to cast all the number-like types into <span class="snip">double</span> types, for it is the default type of numbers in Nougat.<br/><br/><span class="indent"/>If no errors encountered and was compiled successfully, the plug-in can now be used as shown in the example below.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    iter(greeting of Plugin.greetings())
+        render greeting + &quot;\n&quot;;
+            
+    var dict = Plugin.numbers();
+    render &quot;\nNumber 2 is \&quot;&quot; + dict[2] + &quot;\&quot;&quot;;
+}</pre>
+        </code>
+        <br/><br/>
+        <h3 id="5_4">5.4 Using a Proxy Bridge For Callbacks</h3><br/>
+        <p><span class="indent"/>Callbacks in programming are commonly functions that can be passed as an argument to another code and expected to be called back as an argument at a certain situation.<br/><br/><span class="indent"/>In order to create a callback argument within a function in a plug-in, the <span class="snip">Nougat-Bridge.dll</span> (located at the <span class="snip">bin</span> folder in the Nougat installation) must be referenced to the plug-in. However, it is important to use the namespace of the referenced plug-in, which is the <span class="snip">Nougat</span>.<br/><br/><span class="indent"/>Now, the object parameter that would be treated as callback must be converted into type <span class="snip"><i>Nougat.</i>FunctionCallback</span>, it contains a method <span class="snip">.Call(<i>System.Collections.Generic.</i>List&lt;object&gt;)</span> of <span class="snip">void</span> type. This function will make a callback with the list values as parameters.</p>
+        <br/><br/>
+        <code>
+            <pre>using Nougat;
+
+namespace ExamplePlugin {
+    public class Plugin {
+        public static object callbackExample(object Callback) {
+            (Callback as FunctionCallback).Call(new List&lt;object&gt;() {
+                &quot;Hello from proxy test.&quot;
+            });
+
+            return null;
+        }
+    }
+}</pre>
+        </code>
+        <br/><br/>
+        <p><span class="indent"/>After successful compilation, the plug-in (the DLL output file) must be moved to the <span class="snip">bin\plug-ins</span> folder.</p>
+        <br/><br/>
+        <code>
+            <pre>fun main() {
+    Plugin.callbackExample(fun(evt) {
+        render &quot;The message is \&quot;&quot; + evt + &quot;\&quot;&quot;;
+    });
+}</pre>
+        </code>
+        <br/><br/>
+        <div class="navigation" align="center">
+            <a href="4.html">&#x2190; Programming</a> &#x2014; <a href="6.html">The Standard Library &#x2192;</a><br/>
+        </div>
+        <br/><span class="divider"/><br/>
+        <footer>
+            <small>Copyright &copy; 2021 - <a href="https://twitter.com/nathannestein" target="_blank">@nathannestein</a></small>
+            <br/><br/>
+        </footer>
+    </div>
+</body>
+</html>

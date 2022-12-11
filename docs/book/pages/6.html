@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nougat Documentation</title>
+    <link href="../../style.css" rel="stylesheet" />
+</head>
+<body>
+    <br/>
+    <div class="content">
+        <h1 class="title">Nougat Documentation</h1><br/>
+        <h2 class="title">VI - The Standard Library</h2>
+        <br/><span class="divider"/><br/>
+        <div class="navigation" align="center">
+            <a href="5.html">&#x2190; Library Plug-ins</a> &#x2014; <a href="../../index.html">Table of Contents &#x2192;</a><br/>
+        </div>
+        <br/><span class="divider"/><br/><br/>
+        <h3 id="6_1">6.1 The Array Functions</h3><br/>
+        <p><span class="indent"/>Nougat's API is still at its very infancy. However, these functions are mainly for array operations. It includes functions for manipulating, searching, and reversing arrays.</p>
+        <br/><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>contains(<i>array</i>, <i>data</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Checks if an array contains the <i>data</i> parameter passed.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; Array object to be checked.</p>
+                    <p>&bull; <i>data: object</i> &mdash; The data that will be checked if whether it exists on the array.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns a boolean value of <span class="snip">true</span> if the <i>array</i> contains <i>data</i> parameter value; otherwise, returns <span class="snip">false</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>insert(<i>array</i>, <i>data</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Inserts an item at the end of an array and returns the array.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; Array where the item will be appended.</p>
+                    <p>&bull; <i>data: object</i> &mdash; Data to be inserted to the <i>array</i> parameter.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the array where the item was appended to.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>insertArray(<i>array</i>, <i>index</i>, <i>arrayObj</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Inserts an entire array at the specified index of an array and returns the array.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; Array where the array item will be inserted to.</p>
+                    <p>&bull; <i>index: number</i> &mdash; The index where the <i>arrayObj</i> will be inserted to.</p>
+                    <p>&bull; <i>arrayObj: array</i> &mdash; Array object to be written in the <i>array</i> parameter.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the new array that contains the <i>arrayObj</i> parameter inserted to the defined <i>index</i>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>insertAt(<i>array</i>, <i>index</i>, <i>data</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Inserts an item at the specified index of an array and returns the array.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; Array where the item will be appended.</p>
+                    <p>&bull; <i>index: number</i> &mdash; The index where the item in the array will be added. Must not be greater than the array size nor a negative number.</p>
+                    <p>&bull; <i>data: object</i> &mdash; Data to be inserted to the <i>array</i> parameter.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the array where the item was inserted to.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>indexOf(<i>array</i>, <i>data</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Gets the zero-based index of the first occurence of the <i>data</i> parameter in the <i>array</i>.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; Source array where the <i>data</i> parameter will be fetched.</p>
+                    <p>&bull; <i>data: object</i> &mdash; Data object to locate from the <i>array</i> parameter.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the zero-based first occurence index of the <i>data</i> parameter, if not found or doesn't exists in the array, then <span class="snip">-1</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>lastIndexOf(<i>array</i>, <i>data</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Gets the zero-based index of the last occurence of the <i>data</i> parameter in the <i>array</i>.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; Source array where the <i>data</i> parameter will be fetched.</p>
+                    <p>&bull; <i>data: object</i> &mdash; Data object to locate from the <i>array</i> parameter.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the zero-based last occurence index of the <i>data</i> parameter, if not found or doesn't exists in the array, then <span class="snip">-1</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>remove(<i>array</i>, <i>data</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Removes a specified item from an array and returns the array.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; Array where the item will be removed from.</p>
+                    <p>&bull; <i>data: object</i> &mdash; Data to be removed from the <i>array</i> parameter.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the array where the item was removed from.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>removeAt(<i>array</i>, <i>index</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Removes an item from the specified index of an array and returns the array.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; Array where the item will be removed from.</p>
+                    <p>&bull; <i>index: number</i> &mdash; The index where the item in the array will be removed. Must not be greater than the array size nor a negative number.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the array where the item was removed from.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>removeRange(<i>array</i>, <i>index</i>, <i>count</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Removes the items in an array starting from the specified index. The numbers of the item that will be removed is as specified in the <i>count</i> parameter.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; Array where the items will be removed from.</p>
+                    <p>&bull; <i>index: number</i> &mdash; The starting point index where items will be removed.</p>
+                    <p>&bull; <i>count: number</i> &mdash; Number of items to be removed in the <i>array</i> parameter.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the new array without the removed items, as described from the parameter descriptions.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>reverse(<i>array</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Reverses the items from an array.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; Array object that will be reversed.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the new array with the reversed items.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>reverseRange(<i>array</i>, <i>index</i>, <i>count</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Reverses the items from specified range, starting from the specified <i>index</i>.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; Array where the items will be reversed from.</p>
+                    <p>&bull; <i>index: number</i> &mdash; The starting point index where items will be reversed.</p>
+                    <p>&bull; <i>count: number</i> &mdash; Number of items to be reversed starting from the specified <i>index</i> in the <i>array</i> parameter.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the new array with the reversed items.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>size(<i>array</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Gets the number of items in an array.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; Items' array object.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the number of items in an array.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Array.</i>slice(<i>array</i>, <i>index</i>, <i>count</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Makes a new copy of items in an array starting point <i>index</i>, with number of items specified in the <i>count</i> parameter.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>array</i> &mdash; The array object to be sliced.</p>
+                    <p>&bull; <i>index</i> &mdash; Zero-based index of the starting point.</p>
+                    <p>&bull; <i>count</i> &mdash; Number of items to be copied.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the new array containing the copied items starting from <i>index</i> parameter, with number of items specified in the <i>count</i> parameter.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <h3 id="6_2">6.2 The IO Functions</h3><br/>
+        <p><span class="indent"/>Nougat was never intended to be created with a huge API libraries. The IO (stands for Input/Output) library, however, contains some of important functions for input and output operations within Nougat, such as printing and reading text from the user, reading and writing files, and some utilization functions.<br/><br/><span class="indent"/>Below is the complete list of the IO functions (all of which are defined at <span class="snip">bin\Nougat-API.dll</span>), including its names, descriptions, parameters, and return values.</p>
+        <br/><br/>
+        <table class="function" border="1">
+                <tr><td><h3><i>IO.</i>appendToFile(<i>path</i>, <i>data</i>)</h3></td></tr>
+                <tr class="func-det">
+                    <td>
+                        <b>Description</b>
+                        <p><span class="indent"/>Appends a certain data to an existing file.</p><br/>
+                        <b>Parameters</b>
+                        <p>&bull; <i>path: string</i> &mdash; File path where the <i>data</i> will be written.</p>
+                        <p>&bull; <i>data: object</i> &mdash; Data to be appended to the specified file path.</p>
+                        <br/>
+                        <b>Return Value</b>
+                        <p><span class="indent"/>Returns a default <span class="snip">nil</span> value.</p>
+                    </td>
+                </tr>
+        </table><br/>
+        <table class="function" border="1">
+                <tr><td><h3><i>IO.</i>backgroundColor(<i>color</i>)</h3></td></tr>
+                <tr class="func-det">
+                    <td>
+                        <b>Description</b>
+                        <p><span class="indent"/>Changes the background color of the text in the whole console. Check <a href="https://docs.microsoft.com/en-us/dotnet/api/system.consolecolor?view=net-6.0#fields" target="_blank">this</a> out for possible console color values.</p><br/>
+                        <b>Parameter</b>
+                        <p>&bull; <i>color: number</i> &mdash; The number value that represents a color to be used as background color of the texts in the whole console. Complete list <a href="https://docs.microsoft.com/en-us/dotnet/api/system.consolecolor?view=net-6.0#fields" target="_blank">here</a>.</p><br/>
+                        <b>Return Value</b>
+                        <p><span class="indent"/>Returns a default <span class="snip">nil</span> value.</p>
+                    </td>
+                </tr>
+        </table><br/>
+        <table class="function" border="1">
+                <tr><td><h3><i>IO.</i>cls()</h3></td></tr>
+                <tr class="func-det">
+                    <td>
+                        <b>Description</b>
+                        <p><span class="indent"/>Clears all the text/content of the current corresponding console.</p><br/>
+                        <b>Return Value</b>
+                        <p><span class="indent"/>Returns a default <span class="snip">nil</span> value.</p>
+                    </td>
+                </tr>
+        </table><br/>
+        <table class="function" border="1">
+                <tr><td><h3><i>IO.</i>createDir(<i>path</i>)</h3></td></tr>
+                <tr class="func-det">
+                    <td>
+                        <b>Description</b>
+                        <p><span class="indent"/>Create a folder to a specific path. Does nothing if the folder path specified already exists.</p><br/>
+                        <b>Parameter</b>
+                        <p>&bull; <i>path: string</i> &mdash; Path of the folder to be created.</p><br/>
+                        <b>Return Value</b>
+                        <p><span class="indent"/>Returns a boolean value of <span class="snip">true</span> if the folder was successfully created, otherwise <span class="snip">false</span>.</p>
+                    </td>
+                </tr>
+        </table><br/>
+        <table class="function" border="1">
+                <tr><td><h3><i>IO.</i>deleteDir(<i>path</i>)</h3></td></tr>
+                <tr class="func-det">
+                    <td>
+                        <b>Description</b>
+                        <p><span class="indent"/>Deletes a directory/folder including its files and nested directories/folder. Does nothing if the folder path specified was already deleted.</p><br/>
+                        <b>Parameter</b>
+                        <p>&bull; <i>path: string</i> &mdash; Path of the folder to be deleted.</p><br/>
+                        <b>Return Value</b>
+                        <p><span class="indent"/>Returns a boolean value of <span class="snip">true</span> if the folder was already deleted or was deleted successfully, otherwise <span class="snip">false</span>.</p>
+                    </td>
+                </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>deleteFile(<i>path</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Deletes the specified file. Does nothing if the file specified was already deleted.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>path: string</i> &mdash; Path of the file to be deleted.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns a boolean value of <span class="snip">true</span> if the file was already deleted or was deleted successfully, otherwise <span class="snip">false</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>dirExists(<i>path</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Checks if the specified folder exists.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>path: string</i> &mdash; Path of the folder to be checked if it exists.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns a boolean value of <span class="snip">true</span> if the directory/folder exists, otherwise <span class="snip">false</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>exit(<i>exitCode</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Terminates the current executed process (mainly the Nougat interpreter), then returns the <i>exitCode</i> value to the operating system.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>exitCode: number</i> &mdash; Exit code value, usually <span class="snip">0</span>.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns a default <span class="snip">nil</span> value.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>fileExists(<i>path</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Checks if the specified file exists.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>path: string</i> &mdash; Path of the file to be checked if it exists.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns a boolean value of <span class="snip">true</span> if the file exists, otherwise <span class="snip">false</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+                <tr><td><h3><i>IO.</i>foregroundColor(<i>color</i>)</h3></td></tr>
+                <tr class="func-det">
+                    <td>
+                        <b>Description</b>
+                        <p><span class="indent"/>Changes the foreground color of the text in the whole console. Check <a href="https://docs.microsoft.com/en-us/dotnet/api/system.consolecolor?view=net-6.0#fields" target="_blank">this</a> out for possible console color values.</p><br/>
+                        <b>Parameter</b>
+                        <p>&bull; <i>color: number</i> &mdash; The number value that represents a color to be used as foreground color of the texts in the whole console. Complete list <a href="https://docs.microsoft.com/en-us/dotnet/api/system.consolecolor?view=net-6.0#fields" target="_blank">here</a>.</p><br/>
+                        <b>Return Value</b>
+                        <p><span class="indent"/>Returns a default <span class="snip">nil</span> value.</p>
+                    </td>
+                </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>isFile(<i>path</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Checks if the specified path is a file.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>path: string</i> &mdash; The path to be checked if it is a file.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns a boolean value of <span class="snip">true</span> if the specified path is a file, otherwise <span class="snip">false</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>isFolder(<i>path</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Checks if the specified path is a folder.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>path: string</i> &mdash; The path to be checked if it is a folder.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns a boolean value of <span class="snip">true</span> if the specified path is a folder, otherwise <span class="snip">false</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>listDirFiles(<i>path</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Lists the files and folders inside the specified path.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>path: string</i> &mdash; The parent path of the files and folders to be enlisted.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns an array value that contains the files and folders/directories inside the specified path.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>print(<i>data</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Prints a text representation of the <i>data</i> parameter to the standard console output.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>data: object</i> &mdash; The data/object to be printed.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the <i>data</i> parameter.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>printLine(<i>data</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Prints a text representation of the <i>data</i> parameter to the standard console output, and appends a new line at the end.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>data: object</i> &mdash; The data/object to be printed.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the <i>data</i> parameter.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>readFromFile(<i>path</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Reads a text from a specified file path.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>path: string</i> &mdash; Path of the file to be read.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the text as string read from the specified file path.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>readKey()</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Gets an input single character from the user via standard console input.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the single character input from the user.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>readLine()</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Let's the user to enter sequences of characters until new line will be encountered, thus, stops in fetching characters and returns the string to the user.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the input from the user as single line string.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>IO.</i>sleep(<i>timeout</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Suspends the current running thread with a defined timeout interval in millisecond.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; timeout: number &mdash; The millisecond timeout interval.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns the <i>timeout</i> parameter.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+                <tr><td><h3><i>IO.</i>writeToFile(<i>path</i>, <i>data</i>)</h3></td></tr>
+                <tr class="func-det">
+                    <td>
+                        <b>Description</b>
+                        <p><span class="indent"/>Writes a certain data to a file.</p><br/>
+                        <b>Parameters</b>
+                        <p>&bull; <i>path: string</i> &mdash; File path where the <i>data</i> will be written.</p>
+                        <p>&bull; <i>data: object</i> &mdash; Data to be written to the specified file path.</p>
+                        <br/>
+                        <b>Return Value</b>
+                        <p><span class="indent"/>Returns a default <span class="snip">nil</span> value.</p>
+                    </td>
+                </tr>
+        </table><br/>
+        <br/><br/>
+        <h3 id="6_3">6.3 Language Utility Functions</h3><br/>
+        <p><span class="indent"/>This group of function contains some of the Nougat language utilizations such as object type-identification checking and fetching the Nougat interpreter's informations.</p>
+        <br/><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Lang.</i>getType(<i>object</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Returns a string of <i>object</i> parameter's type.</p><br/>
+                    <b>Parameters</b>
+                    <p>&bull; <i>object</i> &mdash; Object to be checked.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns either <span class="snip">&quot;string&quot;</span>, <span class="snip">&quot;number&quot;</span>, <span class="snip">&quot;function&quot;</span>, <span class="snip">&quot;array&quot;</span>, <span class="snip">&quot;map&quot;</span>, or <span class="snip">&quot;boolean&quot;</span> depending on the value of the <i>object</i> parameter; otherwise, <span class="snip">undefined</span> if the <i>object</i> is <span class="snip">nil</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Lang.</i>info()</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Returns a map containing the current Nougat interpreter's informations.</p><br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns a map containing keys <span class="snip">version</span> and <span class="snip">author</span> (both are of string type), and a boolean type <span class="snip">stable</span> which defines if the compiler is a stable released interpreter.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Lang.</i>isArray(<i>object</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Checks object if it contains an object of array type.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>object</i> &mdash; Object to be checked.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns <span class="snip">true</span> if the <i>object</i> parameter contains an array; otherwise <span class="snip">false</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Lang.</i>isFun(<i>object</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Checks object if it contains an object of function type.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>object</i> &mdash; Object to be checked.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns <span class="snip">true</span> if the <i>object</i> parameter contains a function; otherwise <span class="snip">false</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Lang.</i>isMap(<i>object</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Checks object if it contains an object of map type.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>object</i> &mdash; Object to be checked.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns <span class="snip">true</span> if the <i>object</i> parameter contains a map; otherwise <span class="snip">false</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Lang.</i>isNumber(<i>object</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Checks object if it contains an object of number type.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>object</i> &mdash; Object to be checked.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns <span class="snip">true</span> if the <i>object</i> parameter contains a number; otherwise <span class="snip">false</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <table class="function" border="1">
+            <tr><td><h3><i>Lang.</i>isString(<i>object</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Checks object if it contains an object of string type.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>object</i> &mdash; Object to be checked.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns <span class="snip">true</span> if the <i>object</i> parameter contains a string; otherwise <span class="snip">false</span>.</p>
+                </td>
+            </tr>
+        </table><br/>
+        
+        <table class="function" border="1">
+            <tr><td><h3><i>Lang.</i>tryCatch(<i>tryCallback</i>, <i>catchCallback</i>)</h3></td></tr>
+            <tr class="func-det">
+                <td>
+                    <b>Description</b>
+                    <p><span class="indent"/>Performs a virtual try-catch block through callbacks.</p><br/>
+                    <b>Parameter</b>
+                    <p>&bull; <i>tryCallback: fun</i> &mdash; The function that will act as try block.</p>
+                    <p>&bull; <i>catchCallback: fun(placeholder)</i> &mdash; Callback for catch block that requires a <i>placeholder</i> parameter for thrown object.</p>
+                    <br/>
+                    <b>Return Value</b>
+                    <p><span class="indent"/>Returns <span class="snip">nil</span> in default. However, if the try-block or the catch-block returns a value, then the value return from the callback will be returned.</p>
+                </td>
+            </tr>
+        </table><br/>
+        <div class="navigation" align="center">
+            <a href="5.html">&#x2190; Library Plug-ins</a> &#x2014; <a href="../../index.html">Table of Contents &#x2192;</a><br/>
+        </div>
+        <br/><span class="divider"/><br/>
+        <footer>
+            <small>Copyright &copy; 2021 - <a href="https://twitter.com/nathannestein" target="_blank">@nathannestein</a></small>
+            <br/><br/>
+        </footer>
+    </div>
+</body>
+</html>
