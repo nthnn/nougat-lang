@@ -1,4 +1,5 @@
 # Nougat Sources
+Wops! I almost forgot. If you ever notice something strange within these source files, it is because I've accidentally deleted my original source files and just used ILSpy for recovering. Myself granted myself to do that. And yup, I am an error-prone mammal.
 
 ## nougat
 
